@@ -1,0 +1,17 @@
+sample=rnorm(1000,0,1) 
+x=seq(-3,3,by=0.25) 
+p=c() 
+f=c() 
+for(i in 1:25) 
+{ 
+n=1000 
+ecdf=length(which(sample<=x[i]))/n 
+a=pnorm(x[i],lower.tail=TRUE) 
+p=append(p,ecdf) 
+f=append(f,a) 
+} 
+plot(x,p,type="l",col="blue",lwd=2,main="Values Of X VS Theoretical & 
+Empirical",xlab="Values Of x",ylab=" Theoretical & Empirical") 
+lines(x,f,type="l",col="red",lwd=2) 
+abline(v=0,lty=3,col=4) 
+legend(locator(1),legend=c("Empirical"," Theoretical "),fill=c("blue","red")) 
